@@ -1,0 +1,43 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    height: 75px;
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 0px 10px 10px  lightgray;
+}
+
+.searchContainer{
+    width: 60%;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchContainer input{
+    width: 70%;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid lightgray;
+    padding: 5px 10px;
+}
+.searchButton{
+    width: 10%;
+    border: 0px;
+    position: relative;
+    right: 4rem;
+    background-color: transparent;
+}
+.searchButton img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.authContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 15%;
+}
