@@ -4,12 +4,18 @@ import {
   FETCH_DATA,
   REMOVE_FAVOURITES,
   REMOVE_ITEMS_CART,
+  UPDATE_NOTIFICATION,
 } from "../Actions";
 
 const intialState = {
   data: [],
   cart: [],
   favourites: [],
+  notification: {
+    open: false,
+    severity: "success",
+    message: ""
+  }
 };
 export function ecomData(state = intialState, action) {
   switch (action.type) {
@@ -38,6 +44,11 @@ export function ecomData(state = intialState, action) {
         ...state,
         data: action.data,
       };
+    case UPDATE_NOTIFICATION:
+      return{
+        ...state,
+        notification: action.notification
+      }
     default:
       return state;
   }

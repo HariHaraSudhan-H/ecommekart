@@ -21,3 +21,21 @@
     width: 2.5rem;
     height: 2.5rem;
 }
+
+/* @media queries */
+
+@media screen and (max-width:750px) {
+    .freqCategories{
+        transform: scale(0.85);
+    }
+}
+
+@media screen and (max-width:500px) {
+    .freqCategories{
+        max-width: 1000px;
+    }
+
+    .category{
+        transform: scale(0.8);
+    }
+}

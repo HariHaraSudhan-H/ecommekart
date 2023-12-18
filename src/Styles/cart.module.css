@@ -1,7 +1,7 @@
 .cartContainer{
     background-color: white;
     /* margin: 1rem auto; */
-    width: 85%;
+    width: 50%;
     display: flex;
     padding: 1rem;
     flex-direction: column;
@@ -70,8 +70,26 @@
     flex-direction: column;
     width: 70%;
     justify-content: space-evenly;
+    margin: 1rem;
 }
 
 .buttonGroup{
     display: flex;
+    align-items: center;
+}
+
+/* Media queries */
+@media screen and (max-width:1000px) {
+    .filledCartContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cartCostDetails{
+        width: 85%;
+        padding: 1rem;
+    }
+    .cartContainer{
+        width: 85%;
+    }
 }

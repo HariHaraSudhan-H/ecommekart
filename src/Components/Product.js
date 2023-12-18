@@ -28,6 +28,15 @@ const Product = (props) => {
       <Link className={styles.productTitle} to={`/product/${props.product.id}`}>
         {props.product.title}
       </Link>
+      {/* <div style={{ alignSelf: "self-start" }}>
+        <div className={styles.originalPrice}>
+          Rs.{" "}
+          {Math.round(
+            props.product.price * (100 / (100 - props.product.discountPercentage)) * 100
+          ) / 100}
+        </div>
+        Rs.{props.product.price}
+      </div> */}
       {isFavourite ? (
         <button className={styles.wishlistIcon} onClick={handleWishlist}>
           <img src="https://img.icons8.com/material-rounded/24/FA5252/like--v1.png" />

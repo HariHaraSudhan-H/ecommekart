@@ -3,6 +3,7 @@ export const REMOVE_ITEMS_CART = "REMOVE_ITEMS_CART";
 export const FETCH_DATA = "FETCH_DATA";
 export const ADD_FAVOURITES = "ADD_FAVOURITES";
 export const REMOVE_FAVOURITES = "REMOVE_FAVOURITES";
+export const UPDATE_NOTIFICATION = "UPDATE_NOTIFICATION";
  
 export const addItemToCart = (cart)=>{
     return {
@@ -36,5 +37,12 @@ export const removeFavourites = (favourites)=>{
     return{
         type:ADD_FAVOURITES,
         favourites
+    }
+}
+
+export const updateNotification = (notification)=>{
+    return{
+        type: UPDATE_NOTIFICATION,
+        notification
     }
 }

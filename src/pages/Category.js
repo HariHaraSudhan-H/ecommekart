@@ -26,7 +26,7 @@ const Category = (props) => {
     getData();
   }, []);
   return (
-    <div className={styles.productsContainer}>
+    <div >
       {loading ? (
         <Loader />
       ) : (
@@ -37,7 +37,7 @@ const Category = (props) => {
           >
             {props.name.charAt(0).toUpperCase() + props.name.substring(1)}
           </div>
-          <div className={styles.catProductsContainer}>
+          <div className={styles.productsContainer}>
             {data.map((product) => {
               return <Product product={product} key={product.id} />;
             })}

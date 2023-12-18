@@ -11,7 +11,7 @@ const Fashion = (props) => {
     setBackgroundImage(freqCategories[3].backgroundImage);
   }, []);
   return (
-    <div className={styles.productsContainer}>
+    <div>
       <div
         className={styles.categoryTitle}
         // style={{ backgroundImage: `url(${categoryBackgroundImage})` }}

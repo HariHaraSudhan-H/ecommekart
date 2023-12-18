@@ -53,7 +53,7 @@ const Cart = (props) => {
       ) : (
         <>
           <main className={styles.filledCartContainer}>
-            <div className={styles.cartContainer} style={{width:"50%"}}>
+            <div className={styles.cartContainer}>
               <div className={styles.cartTitle}>Shopping Cart</div>
               <div className={styles.cartInnerContainer}>
                 {cart &&

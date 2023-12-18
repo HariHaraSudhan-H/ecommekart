@@ -15,7 +15,6 @@ const Home = (props) => {
     if (props.data[1]) {
       const deals = getBestDeals();
       const sugg = getBestDeals();
-      console.log(deals);
       setBestDeals(deals);
       setSuggested(sugg);
       setLoading(false);
@@ -25,7 +24,6 @@ const Home = (props) => {
     let bestDeals = [];
     for (let i = 0; i < 5; i++) {
       const num = Math.floor(Math.random() * 99);
-      console.log(num);
       bestDeals[i] = props.data[num];
     }
     return bestDeals;

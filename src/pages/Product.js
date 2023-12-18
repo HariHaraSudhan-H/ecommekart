@@ -10,6 +10,7 @@ import {
   addFavourites,
   addItemToCart,
   removeFavourites,
+  updateNotification,
 } from "../Redux/Actions";
 import Loader from "../Components/Loader";
 import { isFavouriteFromList, isItemInCart } from "..";
@@ -53,6 +54,11 @@ const Product = (props) => {
       dispatch(addFavourites(newFav));
     }
     setFavourite(!isFavourite);
+    dispatch(updateNotification({
+      open:true,
+      severity:"success",
+      message:!isFavourite?"Added to favourites successfully":"Removed from favourites successfully"
+    }))
   };
 
   const checkFashion = (category) => {
@@ -67,9 +73,14 @@ const Product = (props) => {
   const handleAddToCart = () => {
     console.log(cart);
     if (!isCart) {
-      setOpen(true);
+      // setOpen(true);
       const newCart = [...cart, { data: data, qty: 1 }];
       dispatch(addItemToCart(newCart));
+      dispatch(updateNotification({
+        open:true,
+        severity:"success",
+        message:"Added to cart successfully"
+      }))
       setCart(true);
       console.log(props);
     }else{
@@ -78,6 +89,11 @@ const Product = (props) => {
       dispatch(addItemToCart([...newCart]));
       setCart(false);
     }
+    dispatch(updateNotification({
+      open:true,
+      severity:"success",
+      message:!isCart?"Added to cart successfully":"Removed from cart successfully"
+    }))
   };
 
   const handleClose = (event, reason) => {
@@ -142,15 +158,14 @@ const Product = (props) => {
             </button>
           )}
 
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{horizontal:"right",vertical:"top"}}>
             <Alert
               onClose={handleClose}
-              severity="success"
-              sx={{ width: "100%" }}
+              sx={{ width: "100%"}}
             >
               Added to cart!!
             </Alert>
-          </Snackbar>
+          </Snackbar> */}
           {isFavourite ? (
             <button className={styles.wishlistIcon} onClick={handleWishlist}>
               <img src="https://img.icons8.com/material-rounded/24/FA5252/like--v1.png" />

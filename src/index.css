@@ -22,3 +22,17 @@ a {
 html {
   height: 100%;
 }
+
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3e423c;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #858383;
+}

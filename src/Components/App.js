@@ -15,11 +15,13 @@ import Product from "../pages/Product";
 import Fashion from "../pages/Fashion";
 import Search from "../pages/Search";
 import Footer from "./Footer";
+import Notification from "./Notification";
 
 const App = (props)=> {
   // dispatch = this.props.dispatch;
   // const [products, setProducts] = useState([]);
   // const [categories, setCategories] = useState([]);
+  const [WishlistMode, setWishListMode] = useState(false);
   const [searchMode, setSearchMode] = useState(false);
   useEffect(()=> {
     const getProducts = async () => {
@@ -40,18 +42,25 @@ const App = (props)=> {
   },[])
 
   const handleOutsideClick = (e)=>{
+    const WishlistIcon = document.getElementById("WishListIcon");
     const inputElement = document.getElementById("searchInput");
-    if(!inputElement.contains(e.target)){
+    if (!inputElement.contains(e.target) || !WishlistIcon.contains(e.target)) {
       setSearchMode(false);
-    }else{
+      if(WishlistMode){
+
+        setWishListMode(false);
+        
+      }
+    }else {
       setSearchMode(true);
+      setWishListMode(true);
     }
   }
 
     // console.log(this.props);
     return (
       <div className="App" onClick={handleOutsideClick}>
-        <Navbar searchMode={searchMode} setSearchMode={setSearchMode}/>
+        <Navbar searchMode={searchMode} setSearchMode={setSearchMode} WishlistMode={WishlistMode} setWishListMode={setWishListMode}/>
         <Routes>
           <Route path="/" element={<Home products={props.data} />} />
           <Route
@@ -69,6 +78,7 @@ const App = (props)=> {
           <Route path="/search/:q" element={<Search />} />
         </Routes>
         <Footer/>
+        <Notification/>
       </div>
     );
 }
