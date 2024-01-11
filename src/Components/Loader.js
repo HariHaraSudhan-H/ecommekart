@@ -1,13 +1,12 @@
 import React from "react";
-import { Audio } from "react-loader-spinner";
 
 import styles from "../Styles/detailProduct.module.css";
-import { CircularProgress, LinearProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 const Loader = () => {
   return (
     <div className={styles.spinner}>
-      {/* <Audio height={150} width={150} color="blue" /> */}
-      <CircularProgress color="secondary" />
+      <img src="https://img.icons8.com/fluency/48/online-shop.png"/>
+      <CircularProgress color="secondary" sx={{width:"50px",height:"50px"}}/>
     </div>
   );
 };

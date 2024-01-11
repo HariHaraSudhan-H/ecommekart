@@ -11,7 +11,7 @@ const Navbar = (props) => {
   const { searchMode, setSearchMode, WishlistMode, setWishListMode } = props;
   // const [WishlistMode, setWishListMode] = useState(false);
   const [searchData, setData] = useState([]);
-  const [isMobile, setMobile] = useState(window.innerWidth>750?false:true);
+  const [isMobile, setMobile] = useState(window.innerWidth>800?false:true);
   const navigate = useNavigate();
 
   const getSearchData = async () => {
@@ -62,7 +62,7 @@ const Navbar = (props) => {
 
   useEffect(() => {
     const resize = () => {
-      if (window.innerWidth > 750) {
+      if (window.innerWidth > 800) {
         setMobile(false);
       } else {
         setMobile(true);
@@ -121,14 +121,16 @@ const Navbar = (props) => {
           <img src="https://img.icons8.com/ios/50/user--v1.png" />
           <span>User</span>
         </Link>
+        
         <Link
           className={styles.cartIcons}
           id="WishListIcon"
           onClick={handleWishListMode}
+          to={isMobile&&"/user/wishlist"}
         >
           <img
             src={
-              WishlistMode
+              WishlistMode && !isMobile
                 ? "https://img.icons8.com/fluency/48/like.png"
                 : "https://img.icons8.com/ios/50/hearts--v1.png"
             }
@@ -136,7 +138,7 @@ const Navbar = (props) => {
           {/* <FavoriteBorderIcon/> */}
           <span>Wishlist</span>
         </Link>
-        {WishlistMode ? (
+        {WishlistMode && !isMobile ? (
           <div className={styles.wishList}>
             {props.favourites.length > 0 ? (
               props.favourites.map((item) => {

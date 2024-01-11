@@ -51,21 +51,23 @@ const CartProduct = (props) => {
       <img src={product.data.thumbnail} />
       <div className={styles.cartProductDetails}>
         {product.data.title}
-        <snap>Rs. {product.data.price*product.qty}</snap>
-        {/* <ButtonGroup variant="contained"> */}
+        <snap>Rs. {product.data.price * product.qty}</snap>
         <div className={styles.buttonGroup}>
-          <Button color="error" size="small" variant="contained" onClick={handleQtyDecrease} sx={{minWidth:"20px",height:"20px"}}>
+          <button onClick={handleQtyDecrease} className={styles.countButton}>
+            {" "}
             -
-          </Button>
-          <Typography sx={{ width: "10%", textAlign: "center" }} my={1}>
-            {product.qty}
-          </Typography>
-          <Button onClick={handleQtyIncrease} variant="contained" size="small" color="success" sx={{minWidth:"10px",height:"20px"}}>
+          </button>
+          <div className={styles.productQty}>{product.qty}</div>
+          <button onClick={handleQtyIncrease} className={styles.countButton}>
             +
+          </button>
+          <Button
+            onClick={handleRemoveFromCart}
+            className={styles.deleteButton}
+          >
+            {<DeleteIcon />}
           </Button>
-          <Button onClick={handleRemoveFromCart}>{<DeleteIcon />}</Button>
         </div>
-        {/* </ButtonGroup> */}
       </div>
     </div>
   );

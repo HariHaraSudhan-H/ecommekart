@@ -6,7 +6,6 @@ import { freqCategories } from "../utils/constants";
 import Loader from "../Components/Loader";
 const Category = (props) => {
   const [data, setData] = useState([]);
-  const [categoryBackgroundImage, setBackgroundImage] = useState("");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getData = async () => {
@@ -17,34 +16,31 @@ const Category = (props) => {
       freqCategories.map((category) => {
         if (props.name === category.title.toLowerCase()) {
           console.log(true);
-          setBackgroundImage(category.backgroundImage);
-          return null;
         }
+        return null;
       });
       setLoading(false);
     };
     getData();
-  }, []);
+  }, [props.name]);
   return (
-    <div >
+    <>
+      <div
+        className={styles.categoryTitle}
+      >
+        {props.name.charAt(0).toUpperCase() + props.name.substring(1)}
+      </div>
+
       {loading ? (
         <Loader />
       ) : (
-        <>
-          <div
-            className={styles.categoryTitle}
-            // style={{ backgroundImage: `url(${categoryBackgroundImage})` }}
-          >
-            {props.name.charAt(0).toUpperCase() + props.name.substring(1)}
-          </div>
-          <div className={styles.productsContainer}>
-            {data.map((product) => {
-              return <Product product={product} key={product.id} />;
-            })}
-          </div>
-        </>
+        <div className={styles.productsList}>
+          {data.map((product) => {
+            return <Product product={product} key={product.id} />;
+          })}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

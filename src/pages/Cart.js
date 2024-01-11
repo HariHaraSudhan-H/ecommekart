@@ -6,8 +6,10 @@ import { connect } from "react-redux";
 import Product from "../Components/Product";
 import CartProduct from "../Components/CartProduct";
 import { Button } from "@mui/material";
+import { removeItemFromCart, updateNotification } from "../Redux/Actions";
 const Cart = (props) => {
-  const { cart, dispatch } = props;  
+  const { cart, dispatch } = props;
+  const [isMobile,setMobile] = useState(window.innerWidth>750?false:true)
   const [loading, setLoading] = useState(false);
   const [size, setSize] = useState(props.cart.length);
   useEffect(() => {
@@ -15,13 +17,24 @@ const Cart = (props) => {
     setLoading(true);
     setSize(cart.length);
     setLoading(false);
+    const resize = () => {
+      if (window.innerWidth > 750) {
+        setMobile(false);
+      } else {
+        setMobile(true);
+      }
+    };
+
+    window.addEventListener("resize", resize);
+
+    return () => window.removeEventListener("resize", resize);
   }, [cart]);
   const getTotalPrice = () => {
     let totalPrice = 0;
     cart.forEach((element) => {
       totalPrice += element.data.price * element.qty;
     });
-    return Math.round(totalPrice*100)/100;
+    return Math.round(totalPrice * 100) / 100;
   };
   const getDiscountPrice = () => {
     let discountPrice = 0;
@@ -32,7 +45,7 @@ const Cart = (props) => {
           (100 - element.data.discountPercentage)) *
         element.qty;
     });
-    return Math.round(discountPrice*100)/100;
+    return Math.round(discountPrice * 100) / 100;
   };
 
   const getQty = () => {
@@ -42,6 +55,15 @@ const Cart = (props) => {
     });
     return qty;
   };
+
+  const handlePlaceOrder = ()=>{
+    dispatch(removeItemFromCart([]));
+    dispatch(updateNotification({
+      open:true,
+      severity:"success",
+      message:"Order placed successfully"
+    }))
+  }
   return (
     <div>
       {size === 0 ? (
@@ -61,7 +83,9 @@ const Cart = (props) => {
                     return <CartProduct product={product} key={product.id} />;
                   })}
               </div>
-              <Button variant="contained" color="success">Place Order</Button>
+              {!isMobile&&<Button variant="contained" color="success" onClick={handlePlaceOrder}>
+                Place Order
+              </Button>}
             </div>
             <section className={styles.cartCostDetails}>
               <div>
@@ -72,11 +96,18 @@ const Cart = (props) => {
                 Discount : <span>{getDiscountPrice()}</span>
               </div>
               <div>
-                Delivery Charges : <span style={{color:"green",fontWeight:"500"}}>Free</span>
+                Delivery Charges :{" "}
+                <span style={{ color: "green", fontWeight: "500" }}>Free</span>
               </div>
               <div>
-                Total Amount : <span style={{fontWeight:"bold",color:"green"}}>Rs.{getTotalPrice()}</span>
+                Total Amount :{" "}
+                <span style={{ fontWeight: "bold", color: "green" }}>
+                  Rs.{getTotalPrice()}
+                </span>
               </div>
+              {isMobile&&<Button variant="contained" color="success" onClick={handlePlaceOrder}>
+                Place Order
+              </Button>}
             </section>
           </main>
         </>

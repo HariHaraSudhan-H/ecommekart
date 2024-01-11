@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./Components/App";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { ecomData } from "./Redux/Reducers";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -16,6 +16,7 @@ export function isFavouriteFromList(productID){
     if(item.id===productID){
       check = true;
     }
+    return null
   })
   return check;
 }
@@ -27,6 +28,7 @@ export function isItemInCart(productID){
     if(item.data.id===productID){
       check = true;
     }
+    return null
   })
   return check;
 }

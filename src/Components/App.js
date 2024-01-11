@@ -4,8 +4,7 @@ import { fetchData } from "../Redux/Actions";
 import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./Navbar";
-import { getCategories, getCompleteProducts } from "../api";
-import Categories from "./Categories";
+import { getCompleteProducts } from "../api";
 import Home from "../pages/Home";
 import UserProfile from "../pages/UserProfile";
 import Cart from "../pages/Cart";
@@ -16,26 +15,17 @@ import Fashion from "../pages/Fashion";
 import Search from "../pages/Search";
 import Footer from "./Footer";
 import Notification from "./Notification";
+import Wishlist from "./Wishlist";
 
 const App = (props)=> {
-  // dispatch = this.props.dispatch;
-  // const [products, setProducts] = useState([]);
-  // const [categories, setCategories] = useState([]);
   const [WishlistMode, setWishListMode] = useState(false);
   const [searchMode, setSearchMode] = useState(false);
   useEffect(()=> {
     const getProducts = async () => {
-      const {store} = props;
       const response = await getCompleteProducts();
       console.log(response);
       const products = response.data.products;
-      // localStorage.setItem("products", products);
-      // setProducts(products);
       props.dispatch(fetchData(products));
-      // store.subscribe(() => {
-      //     console.log(this.props);
-      //     // this.forceUpdate(); 
-      //   });
     };
 
     getProducts();
@@ -74,6 +64,7 @@ const App = (props)=> {
           <Route path="/groceries" element={<Category name="groceries" />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/user/cart" element={<Cart />} />
+          <Route path="/user/wishlist" element={<Wishlist />} />
           <Route path="/product/:productid" element={<Product />} />
           <Route path="/search/:q" element={<Search />} />
         </Routes>

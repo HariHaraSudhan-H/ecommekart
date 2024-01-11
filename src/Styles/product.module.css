@@ -11,7 +11,7 @@
     position: relative;
     z-index: 0;
     box-sizing: border-box;
-    height: 320px;
+    height: 270px;
     width: 250px;
 }
 
@@ -30,11 +30,11 @@
 }
 
 .wishlistIcon{
-    width: 4rem;
+    width: rem;
     border: 0;
     position: absolute;
-    right: 1px;
-    bottom: 1rem;
+    right: 0px;
+    bottom: 5px;
     background-color: transparent;
 }
 
@@ -45,12 +45,26 @@
 
 .productTitle{
     /* font-weight: 600; */
-    margin: 2rem 1.5rem;
+    margin: 1rem 1.5rem;
     color: darkblue;
+    font-size: 0.85rem;
+    width: 80%;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:600px) {
     .productContainer{
-        transform: scale(0.75)
+        width: 100px;
+        height: 150px;
+        margin: 0.25rem;
+    }
+    .productTitle{
+        font-size: 0.5rem;
+    }
+    .wishlistIcon img{
+        width: 1rem;
+    }
+    .productContainer img{
+        width: 95%;
+        border-radius: 0;
     }
 }

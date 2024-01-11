@@ -35,21 +35,21 @@ const Home = (props) => {
         <Loader />
       ) : (
         <>
-          <div>
+          <div className={styles.productsContainer}>
             <div className={styles.homeTitles}>Best Deals!!</div>
+            <div className={styles.productsList}>
+              {bestDeals.map((product) => {
+                return <Product product={product} key={product.id} />;
+              })}
+            </div>
           </div>
           <div className={styles.productsContainer}>
-            {bestDeals.map((product) => {
-              return <Product product={product} key={product.id} />;
-            })}
-          </div>
-          <div>
             <div className={styles.homeTitles}>Suggested for you!</div>
-          </div>
-          <div className={styles.productsContainer}>
-            {suggested.map((product) => {
-              return <Product product={product} key={product.id} />;
-            })}
+            <div className={styles.productsList}>
+              {suggested.map((product) => {
+                return <Product product={product} key={product.id} />;
+              })}
+            </div>
           </div>
         </>
       )}

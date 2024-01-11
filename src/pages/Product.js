@@ -133,7 +133,7 @@ const Product = (props) => {
         <div className={styles.detailsContainer}>
           <h4 className={styles.brand}>{data.brand}</h4>
           <div className={styles.productTitle}>{data.title}</div>
-          <div>{data.description}</div>
+          <div className={styles.productDesc}>{data.description}</div>
           <div className={styles.priceContainer}>
             <div className={styles.originalPrice}>
               Rs.{" "}
@@ -158,14 +158,6 @@ const Product = (props) => {
             </button>
           )}
 
-          {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{horizontal:"right",vertical:"top"}}>
-            <Alert
-              onClose={handleClose}
-              sx={{ width: "100%"}}
-            >
-              Added to cart!!
-            </Alert>
-          </Snackbar> */}
           {isFavourite ? (
             <button className={styles.wishlistIcon} onClick={handleWishlist}>
               <img src="https://img.icons8.com/material-rounded/24/FA5252/like--v1.png" />
@@ -178,7 +170,7 @@ const Product = (props) => {
         </div>
       </header>
 
-      <main>
+      <main className={styles.productMain}>
         <div className={styles.productTitle}>Product Highlights</div>
         <div className={styles.images}>
           {data.images &&

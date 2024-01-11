@@ -6,10 +6,10 @@ const UserProfile = () => {
     <div className={styles.userContainer}>
       <header>
         <img src="https://img.icons8.com/3d-fluency/94/person-male--v6.png" />
-        <h1>Hi Guest!!</h1>
+        <span>Hi Guest!!</span>
       </header>
       <main>
-        <h3>Personal Information</h3>
+        <span>Personal Information</span>
         <div className={styles.detailsContainer}>
           <h5>Email</h5>
           <span>guest@gmail.com</span>

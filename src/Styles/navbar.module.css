@@ -75,12 +75,14 @@
 .searchProductTitle{
     display: inline;
     padding: 0 1rem;
+    width: 60%;
 }
 .authContainer{
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 15%;
+    height: 40px;
 }
 
 .cartIcons{
@@ -103,19 +105,23 @@
 
 .wishList{
     position: absolute;
-    top: 65px;
+    top: 70px;
     right: 5px;
     background-color: lightgray;
     max-height: 25vh;
     overflow-y: scroll;
+    width: 15%;
+    height: 100%;
+    z-index: 5;
 }
 /* Footer */
 .footerContainer{
     width: 100%;
     padding: 45px 0;
     text-align: center;
-    position: sticky;
-    top: 20px;
+    /* position: absolute; */
+    bottom: 0px;
+    font-size: 0.75rem;
 }
 
 /* Mobile Styles */
@@ -130,27 +136,26 @@
     top: 0px;
     background-color: rgb(8, 48, 158);
     box-shadow: 0px 0px 10px -10px  lightgray;
-    z-index: 5;
+    z-index: 3;
 }
 
 .searchWrapMobile{
     width: 80%;
 }
 
+/* WishList Page */
+.wishlistContainer{
+    width: 85%;
+    margin: 1rem auto;
+}
 
-/* Media Queries */
+.wishlistMainContainer{
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.25rem;
+}
 
-/* @media screen and (max-width:850px){
-    .searchContainer{
-        width: 40%;
-    }
-
-    .searchResultsContainer{
-        width: 27%;
-    }
-} */
-
-@media screen and (max-width:750px){
+@media screen and (max-width:800px){
 
     .navbar{
         box-shadow: none;
@@ -159,7 +164,7 @@
     }
 
     .navBrand{
-        transform: scale(0.85);
+        transform: scale(0.75);
         width: 40%;
     }
 
