@@ -12,7 +12,6 @@ const Search = () => {
       const response = await getSearchResults(q);
       const data = response.data.products;
       setData(data);
-      console.log(data);
     };
     getResults();
   }, [q]);

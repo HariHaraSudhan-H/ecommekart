@@ -14,7 +14,6 @@ import {
 } from "../Redux/Actions";
 import Loader from "../Components/Loader";
 import { isFavouriteFromList, isItemInCart } from "..";
-import { Alert, Snackbar } from "@mui/material";
 const Product = (props) => {
   const { dispatch, favourites, cart } = props;
   const { productid } = useParams();
@@ -24,7 +23,6 @@ const Product = (props) => {
   const [isFavourite, setFavourite] = useState(false);
   const [isFashion, setFashion] = useState(false);
   const [isCart, setCart] = useState(false);
-  const [open, setOpen] = useState(false);
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -47,7 +45,6 @@ const Product = (props) => {
   const handleWishlist = () => {
     if (isFavourite) {
       const newFav = favourites.filter((item) => item.id !== data.id);
-      console.log(newFav);
       dispatch(removeFavourites(newFav));
     } else {
       const newFav = [...favourites, data];
@@ -71,9 +68,7 @@ const Product = (props) => {
   };
 
   const handleAddToCart = () => {
-    console.log(cart);
     if (!isCart) {
-      // setOpen(true);
       const newCart = [...cart, { data: data, qty: 1 }];
       dispatch(addItemToCart(newCart));
       dispatch(updateNotification({
@@ -82,10 +77,8 @@ const Product = (props) => {
         message:"Added to cart successfully"
       }))
       setCart(true);
-      console.log(props);
     }else{
       const newCart = cart.filter((item)=>item.data.id!==data.id);
-      console.log(newCart);
       dispatch(addItemToCart([...newCart]));
       setCart(false);
     }
@@ -94,14 +87,6 @@ const Product = (props) => {
       severity:"success",
       message:!isCart?"Added to cart successfully":"Removed from cart successfully"
     }))
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
   };
 
   return loading ? (
@@ -129,7 +114,7 @@ const Product = (props) => {
         )}
       </div>
       <header className={styles.productMainContainer}>
-        <img src={data.thumbnail} className={styles.thumbnail} />
+        <img src={data.thumbnail} className={styles.thumbnail} alt="thumbnail"/>
         <div className={styles.detailsContainer}>
           <h4 className={styles.brand}>{data.brand}</h4>
           <div className={styles.productTitle}>{data.title}</div>
@@ -149,22 +134,22 @@ const Product = (props) => {
           {isCart ? (
             <button className={styles.cartButton} onClick={handleAddToCart}>
               Remove Cart
-              <img src="https://img.icons8.com/ios-filled/50/FFFFFF/add-shopping-cart.png" />
+              <img src="https://img.icons8.com/ios-filled/50/FFFFFF/add-shopping-cart.png" alt="icon"/>
             </button>
           ) : (
             <button className={styles.cartButton} onClick={handleAddToCart}>
               Add to Cart
-              <img src="https://img.icons8.com/ios-filled/50/FFFFFF/add-shopping-cart.png" />
+              <img src="https://img.icons8.com/ios-filled/50/FFFFFF/add-shopping-cart.png" alt="icon"/>
             </button>
           )}
 
           {isFavourite ? (
             <button className={styles.wishlistIcon} onClick={handleWishlist}>
-              <img src="https://img.icons8.com/material-rounded/24/FA5252/like--v1.png" />
+              <img src="https://img.icons8.com/material-rounded/24/FA5252/like--v1.png" alt="icon"/>
             </button>
           ) : (
             <button className={styles.wishlistIcon} onClick={handleWishlist}>
-              <img src="https://img.icons8.com/material-outlined/24/like--v1.png" />
+              <img src="https://img.icons8.com/material-outlined/24/like--v1.png" alt="icon"/>
             </button>
           )}
         </div>
@@ -175,7 +160,7 @@ const Product = (props) => {
         <div className={styles.images}>
           {data.images &&
             data.images.map((image, index) => {
-              return <img src={image} key={index} />;
+              return <img src={image} key={index} alt="samples"/>;
             })}
         </div>
       </main>

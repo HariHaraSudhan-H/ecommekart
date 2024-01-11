@@ -11,7 +11,7 @@ const Wishlist = (props) => {
   const { favourites, dispatch } = props;
   const handleWishlist = () => {
     if (isFavourite) {
-      const newFav = favourites.filter((item) => item.id != props.product.id);
+      const newFav = favourites.filter((item) => item.id !== props.product.id);
       dispatch(removeFavourites(newFav));
     } else {
       const newFav = [...favourites, props.product];
@@ -57,7 +57,6 @@ const Wishlist = (props) => {
 };
 
 const callback = (state) => {
-  console.log(state);
   return {
     ...state,
   };

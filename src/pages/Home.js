@@ -11,7 +11,6 @@ const Home = (props) => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    console.log(props.data);
     if (props.data[1]) {
       const deals = getBestDeals();
       const sugg = getBestDeals();
@@ -58,7 +57,6 @@ const Home = (props) => {
 };
 
 const callback = (state) => {
-  console.log(state);
   return {
     ...state,
   };

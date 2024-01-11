@@ -15,7 +15,6 @@ const SubCategory = (props) => {
       const Outputdata = response.data.products;
       setData(Outputdata);
       setLoading(false);
-      console.log(fashionCategory);
     };
     getData();
   }, []);

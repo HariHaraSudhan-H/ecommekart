@@ -9,7 +9,6 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 const Navbar = (props) => {
   const [searchText, setSearchText] = useState("");
   const { searchMode, setSearchMode, WishlistMode, setWishListMode } = props;
-  // const [WishlistMode, setWishListMode] = useState(false);
   const [searchData, setData] = useState([]);
   const [isMobile, setMobile] = useState(window.innerWidth>800?false:true);
   const navigate = useNavigate();
@@ -17,14 +16,12 @@ const Navbar = (props) => {
   const getSearchData = async () => {
     const data = await getSearchResults(searchText);
     setData(data.data.products.slice(0, 5));
-    console.log(data.data);
   };
   const handleSearchChange = async (e) => {
     {
       setSearchMode(true);
       setSearchText(e.target.value);
     }
-    console.log("hii", e.target.value.length);
     const temp = await getSearchData();
   };
   const handleSearch = async () => {
@@ -45,7 +42,6 @@ const Navbar = (props) => {
   };
   const handleWishListMode = () => {
     setWishListMode(true);
-    console.log(WishlistMode);
   };
 
   // const handleOutsideClick = (e) => {
@@ -210,7 +206,6 @@ const Navbar = (props) => {
 };
 
 const callback = (state) => {
-  console.log(state);
   return {
     ...state,
   };

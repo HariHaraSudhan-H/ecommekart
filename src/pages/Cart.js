@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../Styles/cart.module.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Product from "../Components/Product";
 import CartProduct from "../Components/CartProduct";
 import { Button } from "@mui/material";
 import { removeItemFromCart, updateNotification } from "../Redux/Actions";
@@ -13,7 +12,6 @@ const Cart = (props) => {
   const [loading, setLoading] = useState(false);
   const [size, setSize] = useState(props.cart.length);
   useEffect(() => {
-    console.log(props);
     setLoading(true);
     setSize(cart.length);
     setLoading(false);
@@ -48,13 +46,13 @@ const Cart = (props) => {
     return Math.round(discountPrice * 100) / 100;
   };
 
-  const getQty = () => {
-    let qty = 0;
-    cart.forEach((element) => {
-      qty = qty + element.qty;
-    });
-    return qty;
-  };
+  // const getQty = () => {
+  //   let qty = 0;
+  //   cart.forEach((element) => {
+  //     qty = qty + element.qty;
+  //   });
+  //   return qty;
+  // };
 
   const handlePlaceOrder = ()=>{
     dispatch(removeItemFromCart([]));

@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 const store = createStore(ecomData);
-// console.log(store.getState());
 export function isFavouriteFromList(productID){
   let check = false;
   const favourites = store.getState().favourites;

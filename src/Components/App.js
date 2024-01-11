@@ -23,7 +23,6 @@ const App = (props)=> {
   useEffect(()=> {
     const getProducts = async () => {
       const response = await getCompleteProducts();
-      console.log(response);
       const products = response.data.products;
       props.dispatch(fetchData(products));
     };
@@ -46,8 +45,6 @@ const App = (props)=> {
       setWishListMode(true);
     }
   }
-
-    // console.log(this.props);
     return (
       <div className="App" onClick={handleOutsideClick}>
         <Navbar searchMode={searchMode} setSearchMode={setSearchMode} WishlistMode={WishlistMode} setWishListMode={setWishListMode}/>
@@ -75,17 +72,9 @@ const App = (props)=> {
 }
 
 const callback = (state) => {
-  console.log(state);
   return {
     ...state
   };
 };
 
 export default connect(callback)(App);
-
-// const getCategoriesList = async ()=>{
-//   const response = await getCategories();
-//   const categories = response.data;
-//   console.log(response);
-//   setCategories(categories);
-// }

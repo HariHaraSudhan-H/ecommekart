@@ -33,7 +33,6 @@ const Notification = (props) => {
 };
 
 const callback=(state)=>{
-    console.log(state);
     return{
         ...state
     };

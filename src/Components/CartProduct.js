@@ -20,11 +20,6 @@ const CartProduct = (props) => {
   };
 
   const updateCart = (qty) => {
-    // let newCart = props.cart.filter((item) => item.data.id !== product.data.id);
-    // console.log(newCart);
-    // if (qty != 0) {
-    //   newCart = [...newCart, { ...product, qty: qty }];
-    // }
     let newCart = props.cart;
     if (qty !== 0) {
       newCart.map((item) => {
