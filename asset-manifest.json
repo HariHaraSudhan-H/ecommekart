@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ecommekart/static/css/main.3924c4a1.css",
+    "main.js": "/ecommekart/static/js/main.d6018312.js",
+    "index.html": "/ecommekart/index.html",
+    "main.3924c4a1.css.map": "/ecommekart/static/css/main.3924c4a1.css.map",
+    "main.d6018312.js.map": "/ecommekart/static/js/main.d6018312.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3924c4a1.css",
+    "static/js/main.d6018312.js"
+  ]
+}
